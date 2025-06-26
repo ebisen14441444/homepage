@@ -17,23 +17,21 @@ for (let i = 1; i <= 9; i++) {
     const td = document.createElement("td");
     const key = `${i}-${color}`;
 
-// ラベル作成（判定範囲を広げる）
-const label = document.createElement("label");
-label.style.display = "inline-block";
-label.style.padding = "20px";  
-label.style.cursor = "pointer";
+    const label = document.createElement("label");
+    label.style.display = "inline-block";
+    label.style.padding = "20px";
+    label.style.cursor = "pointer";
 
-const cb = document.createElement("input");
-cb.type = "checkbox";
-cb.setAttribute("data-key", key);
-cb.style.transform = "scale(1.0)";
-cb.addEventListener("change", () => {
-  socket.send(JSON.stringify({ key: key, value: cb.checked }));
-});
+    const cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.setAttribute("data-key", key);
+    cb.style.transform = "scale(1.0)";
+    cb.addEventListener("change", () => {
+      socket.send(JSON.stringify({ key: key, value: cb.checked }));
+    });
 
-label.appendChild(cb);
-td.appendChild(label);
-
+    label.appendChild(cb);
+    td.appendChild(label);
     row.appendChild(td);
   });
 
@@ -52,4 +50,3 @@ document.getElementById("resetBtn").addEventListener("click", () => {
     });
   }
 });
-

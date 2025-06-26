@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+  margin: 30px;
+}
+
+h1 {
+  color: #333;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #aaa;
+  text-align: center;
+}
