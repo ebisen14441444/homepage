@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"sync"
+	"os"
 
 	"github.com/gorilla/websocket"
 )
@@ -31,7 +32,13 @@ func main() {
 	go handleBroadcast()
 
 	log.Println("Server started at :8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	// ✅ 変更後（Render対応）
+port := os.Getenv("PORT")
+if port == "" {
+    port = "8080" // ローカル開発用のデフォルト
+}
+log.Fatal(http.ListenAndServe(":"+port, nil))
+
 }
 
 func handleConnections(w http.ResponseWriter, r *http.Request) {
