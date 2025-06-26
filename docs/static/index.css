@@ -1,6 +1,6 @@
-input[type="checkbox"] {
-  width: 24px;
-  height: 24px;
-  transform: scale(3);
+.big-checkbox {
+  width: 20px;
+  height: 20px;
+  transform: scale(1.8); /* 大きくする */
   cursor: pointer;
 }
