@@ -20,13 +20,13 @@ for (let i = 1; i <= 9; i++) {
 // ラベル作成（判定範囲を広げる）
 const label = document.createElement("label");
 label.style.display = "inline-block";
-label.style.padding = "40px";  
+label.style.padding = "20px";  
 label.style.cursor = "pointer";
 
 const cb = document.createElement("input");
 cb.type = "checkbox";
 cb.setAttribute("data-key", key);
-cb.style.transform = "scale(1.5)";
+cb.style.transform = "scale(1.0)";
 cb.addEventListener("change", () => {
   socket.send(JSON.stringify({ key: key, value: cb.checked }));
 });
