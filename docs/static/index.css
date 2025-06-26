@@ -1,6 +1,6 @@
 .big-checkbox {
   width: 10px;
-  height: 5px;
-  transform: scale(1.0); /* 大きくする */
+  height: 10px;
+  transform: scale(1.2); /* 大きくする */
   cursor: pointer;
 }
