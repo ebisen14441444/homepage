@@ -28,3 +28,17 @@ for (let i = 1; i <= 9; i++) {
 
   tableBody.appendChild(row);
 }
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  for (let i = 1; i <= 9; i++) {
+    ["pink", "green", "yellow", "blue"].forEach(color => {
+      const key = `${i}-${color}`;
+      const cb = document.querySelector(`input[data-key="${key}"]`);
+      if (cb && cb.checked) {
+        cb.checked = false;
+        socket.send(JSON.stringify({ key: key, value: false }));
+      }
+    });
+  }
+});
+
