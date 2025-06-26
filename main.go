@@ -3,15 +3,16 @@ package main
 import (
 	"log"
 	"net/http"
-	"sync"
 	"os"
+	"sync"
 
 	"github.com/gorilla/websocket"
+	"github.com/labstack/echo/v4"
 )
 
 type CheckUpdate struct {
-	Key   string `json:"key"`   // 例: "1-pink"
-	Value bool   `json:"value"` // true or false
+	Key   string `json:"key"`
+	Value bool   `json:"value"`
 }
 
 var (
@@ -25,27 +26,36 @@ var (
 )
 
 func main() {
-	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/", fs)
+	e := echo.New()
 
-	http.HandleFunc("/ws", handleConnections)
+	// 静的ファイル（例: static/index.html, script.js など）を配信
+	e.Static("/", "static")
+
+	// WebSocketエンドポイント
+	e.GET("/ws", func(c echo.Context) error {
+		return handleConnections(c.Response(), c.Request())
+	})
+
+	// WebSocket送信用ループ
 	go handleBroadcast()
 
-	log.Println("Server started at :8080")
-	// ✅ 変更後（Render対応）
-port := os.Getenv("PORT")
-if port == "" {
-    port = "8080" // ローカル開発用のデフォルト
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	log.Println("Server started at :" + port)
+	returnErr := e.Start(":" + port)
+	if returnErr != nil {
+		log.Fatal(returnErr)
+	}
 }
-log.Fatal(http.ListenAndServe(":"+port, nil))
 
-}
 
-func handleConnections(w http.ResponseWriter, r *http.Request) {
+func handleConnections(w http.ResponseWriter, r *http.Request) error{
 	ws, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println("WebSocket upgrade error:", err)
-		return
+		return err
 	}
 	defer ws.Close()
 
@@ -72,6 +82,7 @@ func handleConnections(w http.ResponseWriter, r *http.Request) {
 
 		broadcast <- update
 	}
+	return nil
 }
 
 func handleBroadcast() {
