@@ -1,4 +1,4 @@
-const socket = new WebSocket(`ws://${location.host}/ws`);
+const socket = new WebSocket("wss://homepage-w2x4.onrender.com/ws");
 const tableBody = document.querySelector("#checkboxTable tbody");
 
 socket.onmessage = (event) => {
