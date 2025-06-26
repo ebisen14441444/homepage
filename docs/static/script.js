@@ -34,7 +34,7 @@ document.getElementById("resetBtn").addEventListener("click", () => {
     ["pink", "green", "yellow", "blue"].forEach(color => {
       const key = `${i}-${color}`;
       const cb = document.querySelector(`input[data-key="${key}"]`);
-      if (cb && cb.checked) {
+      if (cb) {
         cb.checked = false;
         socket.send(JSON.stringify({ key: key, value: false }));
       }
