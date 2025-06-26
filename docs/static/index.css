@@ -1,6 +1,6 @@
 input[type="checkbox"] {
   width: 24px;
   height: 24px;
-  transform: scale(1.5);
+  transform: scale(3);
   cursor: pointer;
 }
