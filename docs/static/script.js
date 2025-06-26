@@ -20,7 +20,7 @@ for (let i = 1; i <= 9; i++) {
 // ラベル作成（判定範囲を広げる）
 const label = document.createElement("label");
 label.style.display = "inline-block";
-label.style.padding = "10px";  
+label.style.padding = "40px";  
 label.style.cursor = "pointer";
 
 const cb = document.createElement("input");
