@@ -2,30 +2,26 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>チェック共有</title>
-  <style>
-    table { border-collapse: collapse; }
-    th, td { border: 1px solid #999; padding: 8px; text-align: center; }
-  </style>
+  <title>私のホームページ</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>ようこそ！</h1>
+  <p>ここは私の制作物を紹介するページです。</p>
+
+  <img src="image/dog1.jpg" alt="犬です" width="200">
+
   <h2>チェック表（リアルタイム共有）</h2>
   <table id="checkboxTable">
     <thead>
       <tr>
         <th>番号</th>
-        <th>pink</th>
-        <th>green</th>
-        <th>yellow</th>
-        <th>blue</th>
+        <th>pink</th><th>green</th><th>yellow</th><th>blue</th>
       </tr>
     </thead>
-    <tbody>
-      <!-- JSで生成 -->
-    </tbody>
+    <tbody></tbody>
   </table>
   <button id="resetBtn">全リセット</button>
-
 
   <script src="script.js"></script>
 </body>
