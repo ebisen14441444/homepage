@@ -15,14 +15,25 @@ for (let i = 1; i <= 9; i++) {
 
   ["pink", "green", "yellow", "blue"].forEach(color => {
     const td = document.createElement("td");
-    const cb = document.createElement("input");
     const key = `${i}-${color}`;
-    cb.type = "checkbox";
-    cb.setAttribute("data-key", key);
-    cb.addEventListener("change", () => {
-      socket.send(JSON.stringify({ key: key, value: cb.checked }));
-    });
-    td.appendChild(cb);
+
+// ラベル作成（判定範囲を広げる）
+const label = document.createElement("label");
+label.style.display = "inline-block";
+label.style.padding = "10px";  
+label.style.cursor = "pointer";
+
+const cb = document.createElement("input");
+cb.type = "checkbox";
+cb.setAttribute("data-key", key);
+cb.style.transform = "scale(1.5)";
+cb.addEventListener("change", () => {
+  socket.send(JSON.stringify({ key: key, value: cb.checked }));
+});
+
+label.appendChild(cb);
+td.appendChild(label);
+
     row.appendChild(td);
   });
 
