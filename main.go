@@ -5,6 +5,8 @@ import (
 	"net/http"
 	"os"
 	"sync"
+	"github.com/ebisen14441444/homepage/handler"
+	"github.com/ebisen14441444/homepage/db"
 
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
@@ -31,11 +33,13 @@ func main() {
 	// 静的ファイルを配信
 	e.Static("/", "static")
 
+	e.GET("/memo", handler.GetMemos)
+	e.POST("/memo", handler.CreateMemo)
+	e.DELETE("/memo/:id", handler.DeleteMemo)
 	// WebSocketエンドポイント
 	e.GET("/ws", func(c echo.Context) error {
 		return handleConnections(c.Response(), c.Request())
 	})
-
 	// ブロードキャスト処理開始
 	go handleBroadcast()
 
