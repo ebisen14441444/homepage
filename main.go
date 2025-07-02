@@ -5,8 +5,7 @@ import (
 	"net/http"
 	"os"
 	"sync"
-	"github.com/ebisen14441444/homepage/handler"
-	"github.com/ebisen14441444/homepage/db"
+	"checkapp/handler"
 
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
@@ -35,7 +34,7 @@ func main() {
 
 	e.GET("/memo", handler.GetMemos)
 	e.POST("/memo", handler.CreateMemo)
-	e.DELETE("/memo/:id", handler.DeleteMemo)
+	e.DELETE("/memo/:id", handler.DeleteMemos)
 	// WebSocketエンドポイント
 	e.GET("/ws", func(c echo.Context) error {
 		return handleConnections(c.Response(), c.Request())

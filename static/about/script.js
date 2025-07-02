@@ -1,1 +1,1 @@
-console.log("準備完了")
+console.log(document.querySelecter("#colorPicker"))

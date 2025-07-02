@@ -1,22 +1,22 @@
 package repository
 
 import (
-	"database/sql"
-	"homepage/db"
-	"homepage/model"
+	// "database/sql"
+	"checkapp/db"
+	"checkapp/model"
 )
 
-func GetAllMemos()(m []model.memo,error){
+func GetAllMemos()([]model.Memo,error){
 	rows,err:= db.Conn.Query("SELECT id,content FROM memos")
 	if err != nil{
 		return nil,err
 	}
 	defer rows.Close()
 
-  var 
+  var memos []model.Memo
 	for rows.Next(){
 		var m model.Memo
-		if err := rows.Scan(&m.ID,m.Content);err != nil{
+		if err := rows.Scan(&m.ID,&m.Content);err != nil{
 			return nil,err
 		}
 		memos = append(memos,m)

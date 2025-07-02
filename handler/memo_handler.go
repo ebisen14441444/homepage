@@ -1,9 +1,8 @@
-package main
+package handler
 
 import (
 	"checkapp/model"
-	"homepage/model"
-	"homepage/repository"
+	"checkapp/repository"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
