@@ -1,1 +1,1 @@
-console.log(document.querySelecter("#colorPicker"))
+console.log(document.querySelecter("#colorPicker").value);
