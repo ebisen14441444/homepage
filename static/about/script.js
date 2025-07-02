@@ -1,3 +1,6 @@
-console.log(document.querySelector('#colorPicker').value);
-document.querySelector('#colorText').textContent=`カラーコード:${document.querySelector('#colorPicker').value}`;
-document.querySelector('#colorText2').innerHTML='<h1>カラーコード</h1>';
+const text=document.querySelector('#colorText');
+const color = document.querySelector('#colorPicker');
+
+text.textContent=`カラーコード:${color.value}`;
+color.addEventListener('input',colorBg);
+
