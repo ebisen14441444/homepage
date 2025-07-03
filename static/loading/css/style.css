@@ -12,7 +12,6 @@
   width: 200px;
   height: 200px;
 }
-
 /* ローディング完了したらローディング画面を隠す} */
 .loaded {
   opacity: 0;
